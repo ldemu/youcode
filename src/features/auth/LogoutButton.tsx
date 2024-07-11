@@ -3,12 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/ui/loader";
 import { useMutation } from "@tanstack/react-query";
-import { LogIn } from "lucide-react";
-import { signIn } from "next-auth/react";
+import { LogOut } from "lucide-react";
+import { signOut } from "next-auth/react";
 
-export const LoginButton = () => {
+export const LogoutButton = () => {
   const mutation = useMutation({
-    mutationFn: async () => signIn(),
+    mutationFn: async () => signOut(),
   });
 
   return (
@@ -23,9 +23,9 @@ export const LoginButton = () => {
       {mutation.isPending ? (
         <Loader className="ml-2 mr-1" size="12" />
       ) : (
-        <LogIn className="ml-2 mr-1" size="12" />
+        <LogOut className="ml-2 mr-1" size="12" />
       )}
-      Login
+      Logout
     </Button>
   );
 };
